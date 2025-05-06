@@ -52,7 +52,7 @@ bot.on('my_chat_member', async (ctx) => {
         }
     }
     else if (newStatus === 'left') {
-        // Бот удален из группы
+        // Бот удален из групп4
         let group = await Group.findOne({ groupId: chat.id });
         const deletedGroup = await Group.findOneAndDelete({ groupId: chat.id });
 
