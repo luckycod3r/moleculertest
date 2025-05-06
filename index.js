@@ -35,7 +35,7 @@ bot.on('my_chat_member', async (ctx) => {
     const ownerId = update.from.id;
     const newStatus = update.new_chat_member.status;
     const oldStatus = update.old_chat_member.status;
-
+//new
     if (newStatus === 'administrator' && oldStatus !== 'administrator') {
         const existingGroup = await Group.findOne({ groupId: chat.id });
 
