@@ -5,7 +5,7 @@ const HTTPServer = require("moleculer-web");
 // определение nodeID и транспорта
 const brokerNode1 = new ServiceBroker({
   nodeID: "node-1",
-  transporter: "redis://sZenYm4G9f4uga@redis.services.netcloud.dev:6379"
+  transporter: "redis://sZenYm4G9f4uga@srv-captain--redis:6379"
 });
 
 // создать сервис "шлюз"
@@ -37,7 +37,7 @@ brokerNode1.createService({
 // определение nodeID и транспорта
 const brokerNode2 = new ServiceBroker({
   nodeID: "node-2",
-  transporter: "redis://sZenYm4G9f4uga@redis.services.netcloud.dev:6379"
+  transporter: "redis://sZenYm4G9f4uga@srv-captain--redis:6379"
 });
 
 // создание сервиса "products"
