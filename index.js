@@ -16,6 +16,7 @@ brokerNode1.createService({
   name: "gateway",
   // загрузить HTTP сервер
   mixins: [HTTPServer],
+  port : 3000,
 
   settings: {
     routes: [
