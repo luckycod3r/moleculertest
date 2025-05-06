@@ -5,7 +5,6 @@ const HTTPServer = require("moleculer-web");
 // определение nodeID и транспорта
 const brokerNode1 = new ServiceBroker({
   nodeID: "node-1",
-  transporter: "redis://sZenYm4G9f4uga@srv-captain--redis:6379"
 });
 
 // создать сервис "шлюз"
@@ -20,12 +19,6 @@ brokerNode1.createService({
       {
         aliases: {
           // при получении запроса "GET /products" будет выполнено действие "listProducts" из сервиса "products"
-          "GET /products": "products.listProducts"
-        }
-      },
-      {
-        aliases: {
-          // при получении запроса "GET /products" будет выполнено действие "listProducts" из сервиса "products"
           "GET /organs": "zhopa.piska"
         }
       }
@@ -35,30 +28,11 @@ brokerNode1.createService({
 
 // создание брокера для второго узла
 // определение nodeID и транспорта
-const brokerNode2 = new ServiceBroker({
-  nodeID: "node-2",
-  transporter: "redis://sZenYm4G9f4uga@srv-captain--redis:6379"
-});
 
 // создание сервиса "products"
-brokerNode2.createService({
-  // имя сервиса
-  name: "products",
-
-  actions: {
-    // определение действия, которое вернёт список доступных товаров
-    listProducts(ctx) {
-      return [
-        { name: "Apples", price: 5 },
-        { name: "Oranges", price: 3 },
-        { name: "Bananas", price: 2 }
-      ];
-    }
-  }
-});
 
 
-brokerNode2.createService({
+brokerNode1.createService({
     name : "zhopa",
     actions : {
         piska(ctx){
@@ -67,4 +41,4 @@ brokerNode2.createService({
     }
 })
 // запуск обоих брокеров
-Promise.all([brokerNode1.start(), brokerNode2.start()]);
+Promise.all([brokerNode1.start()]);
